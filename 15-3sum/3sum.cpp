@@ -10,7 +10,6 @@ public:
            // Step 2: Skip duplicate values for the current number
            if (i > 0 && nums[i] == nums[i - 1]) continue;
 
-
            int target = -nums[i]; // We need two numbers that sum to -nums[i]
            int left = i + 1, right = n - 1;
 
