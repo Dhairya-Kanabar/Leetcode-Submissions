@@ -1,31 +1,27 @@
 class Solution {
- public:
-  int maxArea(vector<int>& height) {
-    int n=height.size();
-    // int cvol=0;
-    // int mvol=0;
-    // for(int i=0;i<n;i++){
-    //     for(int j=i+1;j<n;j++){
-    //         cvol=min(height[i], height[j]) * (j - i);
-    //         mvol=max(mvol,cvol);
-    //     }
-    // }
-    // return mvol;
-    int lp=0;
-    int rp=n-1;
-    int cvol=0;
-    int ans=0;
-    int w=0,h=0;
-    while(lp<rp){
-        w=rp-lp;
-        h=min(height[lp],height[rp]);
-        cvol=w*h;
-        ans=max(ans,cvol);
+public:
+    int maxArea(vector<int>& height) {
+        int n=height.size();
+        int lp=0;
+        int rp=n-1;
+        int ans=0;
+        int w=0;
+        int h=0;
+        int current=0;
 
-        if(height[lp]<height[rp]){
-            lp++;
-        }else { rp--;}
+        while(lp<rp){
+                w=rp-lp;
+                h=min(height[lp],height[rp]);
+                current=w*h;
+                ans=max(current,ans);
+
+                if(height[lp]<height[rp]){
+                    lp++;
+                }else{
+                    rp--;
+                }
+        }
+
+        return ans;
     }
-return ans;
-  }
 };
